@@ -12,14 +12,14 @@ def calculate_wakeup_times(sleep_cycles=5, cycle_duration=90):
     for i in range(1, sleep_cycles + 1):
         total_sleep_minutes = i * cycle_duration + 15  # 15 minutes to fall asleep
         wakeup_time = current_time + datetime.timedelta(minutes=total_sleep_minutes)
-        wakeup_times.append(wakeup_time.strftime("%I:%M %p"))
+        wakeup_times.append(wakeup_time.strftime("%H:%M"))
     
     return wakeup_times
 
 def calculate_bedtime(wakeup_time, sleep_cycles=6, cycle_duration=90):
     """Calculate the time to go to bed in order to wake up at the specified time."""
     
-    wakeup_time_obj = datetime.datetime.strptime(wakeup_time, "%I:%M %p")
+    wakeup_time_obj = datetime.datetime.strptime(wakeup_time, "%H:%M")
     current_date = datetime.datetime.now().date()
     wakeup_time_with_date = datetime.datetime.combine(current_date, wakeup_time_obj.time())
     
@@ -32,9 +32,9 @@ def calculate_bedtime(wakeup_time, sleep_cycles=6, cycle_duration=90):
         total_sleep_minutes = i * cycle_duration + 15  # 15 minutes to fall asleep
         bedtime = wakeup_time_with_date - datetime.timedelta(minutes=total_sleep_minutes)
         if i in [5, 6]:  # Mark suggested bedtimes for 5 and 6 cycles
-            bedtimes.append(f"{bedtime.strftime('%I:%M %p')} (Suggested for {i} cycles)")
+            bedtimes.append(f"{bedtime.strftime('%H:%M')} (Suggested for {i} cycles)")
         else:
-            bedtimes.append(bedtime.strftime("%I:%M %p"))
+            bedtimes.append(bedtime.strftime("%H:%M"))
     
     return bedtimes
 
@@ -48,7 +48,7 @@ def suggest_good_sleep_cycle():
     for cycles in sleep_cycles:
         total_sleep_minutes = cycles * 90 + 15  # Each cycle is 90 minutes + 15 minutes to fall asleep
         wakeup_time = current_time + datetime.timedelta(minutes=total_sleep_minutes)
-        suggested_wakeup_times.append(f"{wakeup_time.strftime('%I:%M %p')} (Suggested for {cycles} cycles)")
+        suggested_wakeup_times.append(f"{wakeup_time.strftime('%H:%M')} (Suggested for {cycles} cycles)")
     
     return suggested_wakeup_times
 

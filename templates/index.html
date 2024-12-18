@@ -78,42 +78,5 @@
     <p>Created with ❤️ by coppters</p>
 </footer>
 
-<script>
-    function calculateWakeupTimes() {
-        const sleepCycles = document.getElementById('sleep_cycles').value || 5;
-        const currentTime = new Date(); // Use user's local time
-        const wakeupResults = document.getElementById('wakeup-results');
-        wakeupResults.innerHTML = '';
-
-        for (let i = 1; i <= sleepCycles; i++) {
-            const totalSleepMinutes = i * 90 + 15; 
-            const wakeupTime = new Date(currentTime.getTime() + totalSleepMinutes * 60000);
-            const timeString = wakeupTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
-            const li = document.createElement('li');
-            li.textContent = `🕒 ${timeString}`;
-            wakeupResults.appendChild(li);
-        }
-    }
-
-    function calculateBedtimes() {
-        const wakeupTimeInput = document.getElementById('wakeup_time').value;
-        const wakeupTimeParts = wakeupTimeInput.split(':');
-        const wakeupTime = new Date();
-        wakeupTime.setHours(parseInt(wakeupTimeParts[0]), parseInt(wakeupTimeParts[1]), 0);
-
-        const bedtimeResults = document.getElementById('bedtime-results');
-        bedtimeResults.innerHTML = '';
-
-        for (let i = 1; i <= 6; i++) {
-            const totalSleepMinutes = i * 90 + 15; 
-            const bedtime = new Date(wakeupTime.getTime() - totalSleepMinutes * 60000);
-            const timeString = bedtime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
-            const li = document.createElement('li');
-            li.textContent = `🛏️ ${timeString} (Suggested for ${i} cycles)`;
-            bedtimeResults.appendChild(li);
-        }
-    }
-</script>
-
 </body>
 </html>

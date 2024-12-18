@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wake-Up Time Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>⏰ Wake-Up Time Calculator</h1>
+    <p>Find out when to sleep or when to wake up to feel refreshed!</p>
+</header>
+
+<div class="container">
+
+    <!-- Form to calculate wake-up times if you go to sleep now -->
+    <div class="form-section">
+        <h2>Calculate Best Wake-Up Times</h2>
+        <form method="POST">
+            <input type="hidden" name="calculate_wakeup" value="1">
+            <label for="sleep_cycles">Number of Sleep Cycles (Default 5)</label><br>
+            <input type="number" id="sleep_cycles" name="sleep_cycles" value="5" min="1" max="10"><br><br>
+            <button type="submit" class="btn-primary">Calculate Wake-Up Times</button>
+        </form>
+
+        {% if wakeup_times %}
+            <div class="results">
+                <h3>Suggested Wake-Up Times</h3>
+                <ul>
+                    {% for time in wakeup_times %}
+                        <li>🕒 {{ time }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Section to display suggested wake-up times for 5-6 cycles -->
+    <div class="form-section">
+        <h2>Suggested Wake-Up Times for 5-6 Sleep Cycles</h2>
+        <div class="results">
+            <ul>
+                {% for time in suggested_wakeup_times %}
+                    <li>🕒 {{ time }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- Form to calculate the best bedtimes for a given wake-up time -->
+<div class="form-section">
+    <h2>Calculate Best Bedtime</h2>
+    <form method="POST">
+        <input type="hidden" name="calculate_bedtime" value="1">
+        <label for="wakeup_time">Enter Desired Wake-Up Time (e.g., 07:30 AM)</label><br>
+        <input type="text" id="wakeup_time" name="wakeup_time" placeholder="07:30 AM" required><br><br>
+        <button type="submit" class="btn-primary">Calculate Bedtimes</button>
+    </form>
+
+    {% if bedtimes %}
+        <div class="results">
+            <h3>Suggested Bedtimes</h3>
+            <ul>
+                {% for time in bedtimes %}
+                    <li {% if 'Suggested' in time %}class="suggested"{% endif %}>🛏️ {{ time }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
+
+
+</div>
+
+<footer>
+    <p>Created with ❤️ by coppters</p>
+</footer>
+
+</body>
+</html>

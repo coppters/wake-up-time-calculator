@@ -1,0 +1,154 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1e293b; /* Dark background */
+    color: #f8f8f2; /* Light text */
+    line-height: 1.6;
+    padding: 20px; /* Add padding to the body */
+}
+
+header {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: #0f172a; 
+    color: #f1f5f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #94a3b8;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    background: #0f172a;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-section {
+    padding: 1rem 0;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #f8f8f2;
+}
+
+input[type="number"], 
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    border: 2px solid #94a3b8;
+    border-radius: 8px;
+    text-align: center;
+}
+
+button.btn-primary {
+    background-color: #38bdf8;
+    color: #0f172a;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    width: 100%; /* Make button full-width on mobile */
+}
+
+button.btn-primary:hover {
+    background-color: #0ea5e9;
+    color: #f8f8f2;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.results ul li {
+    font-size: 1.2rem;
+    padding: 10px;
+    background-color: #0f172a;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.results ul li.suggested {
+    background-color: #2b2f3a; /* Slightly lighter background for suggested times */
+    border: 2px solid #38bdf8; /* Highlight suggested times */
+    font-weight: bold; /* Bold text to make it stand out */
+}
+
+
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #0f172a;
+    color: #94a3b8;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    button.btn-primary {
+        font-size: 1rem;
+    }
+
+    input[type="number"], 
+    input[type="text"] {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    .results ul li {
+        font-size: 0.9rem;
+    }
+
+    button.btn-primary {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+
+
+body {
+    background-image: url('../static/Sleep.gif');
+    background-size: contain;
+    background-position: center;
+}
